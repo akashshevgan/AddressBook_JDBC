@@ -7,8 +7,11 @@ public class Data {
     private int zipcode;
     private int phoneNumber;
     private String emailId;
+    private int id;
+    private String type;
+    private String addressbook_name;
 
-    public Data(String firstName, String lastName, String address, String city, String state, int zipcode, int phoneNumber, String email) {
+    public Data(String firstName, String lastName, String address, String city, String state, int zipcode, int phoneNumber, String email, int id,String type,String addressbook_name) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -17,18 +20,9 @@ public class Data {
         this.zipcode = zipcode;
         this.phoneNumber = phoneNumber;
         this.emailId = email;
+        this.id = id;
+        this.type = type;
+        this.addressbook_name = addressbook_name;
     }
 
-    @Override
-    public String toString() {
-        return
-                "First Name: " + firstName + '\n' +
-                "Last Name: " + lastName + '\n' +
-                "Address: " + address + '\n' +
-                "City: " + city + '\n' +
-                "State: " + state + '\n' +
-                "Zip: " + zipcode + '\n' +
-                "PhoneNumber: " + phoneNumber + '\n' +
-                "EmailId: " + emailId + '\n';
-    }
 }
