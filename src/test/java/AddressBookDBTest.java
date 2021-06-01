@@ -28,11 +28,11 @@ public class AddressBookDBTest {
         Assertions.assertEquals(2, contactDetails.size());
     }
 
-//    @Test
-//    void givenCityNaME_WhenFound_ShouldReturnNoOfContactsFromGivenState() throws CustomException {
-//        AddressBookDB addressBookDB = new AddressBookDB();
-//        List<Data> contactDetails;
-//        contactDetails = addressBookDB.getContactDetailsAccordingToState("Maharastra");
-//        Assertions.assertEquals(4, contactDetails.size());
-//    }
+    @Test
+    void givenCityNaME_WhenFound_ShouldReturnNoOfContactsFromGivenState() throws CustomException {
+        AddressBookDB addressBookDB = new AddressBookDB();
+        List<Data> contactDetails;
+        contactDetails = addressBookDB.getContactDetailsAccordingToState("Maharastra");
+        Assertions.assertEquals(4, contactDetails.size());
+    }
 }

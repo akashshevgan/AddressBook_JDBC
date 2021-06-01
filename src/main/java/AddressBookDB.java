@@ -71,8 +71,8 @@ public class AddressBookDB {
         return this.getDataFromDBWhenSQLGiven(sql);
     }
 
-//    public List<Data> getContactDetailsAccordingToState(String state) throws CustomException {
-//        String sql = String.format("select * from addressbook where state = '%s';", state);
-//        return this.getDataFromDBWhenSQLGiven(sql);
-//    }
+    public List<Data> getContactDetailsAccordingToState(String state) throws CustomException {
+        String sql = String.format("select * from addressbook where state = '%s';", state);
+        return this.getDataFromDBWhenSQLGiven(sql);
+    }
 }
