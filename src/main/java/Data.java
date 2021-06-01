@@ -21,7 +21,7 @@ public class Data {
 
     @Override
     public String toString() {
-        return "<----Contact of " + firstName + " is---->\n" +
+        return
                 "First Name: " + firstName + '\n' +
                 "Last Name: " + lastName + '\n' +
                 "Address: " + address + '\n' +
