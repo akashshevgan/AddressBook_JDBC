@@ -1,7 +1,5 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
 import java.util.List;
 
 public class AddressBookDBTest {
@@ -21,4 +19,20 @@ public class AddressBookDBTest {
         int result = addressBookDB.updateContactDetailsInDB("Yogesh", "901165307");
         Assertions.assertEquals(1, result);
     }
+
+    @Test
+    void givenCityNaME_WhenFound_ShouldReturnNoOfContactsFromGivenCity() throws CustomException {
+        AddressBookDB addressBookDB = new AddressBookDB();
+        List<Data> contactDetails;
+        contactDetails = addressBookDB.getContactDetailsAccordingToCity("Vaijapur");
+        Assertions.assertEquals(2, contactDetails.size());
+    }
+
+//    @Test
+//    void givenCityNaME_WhenFound_ShouldReturnNoOfContactsFromGivenState() throws CustomException {
+//        AddressBookDB addressBookDB = new AddressBookDB();
+//        List<Data> contactDetails;
+//        contactDetails = addressBookDB.getContactDetailsAccordingToState("Maharastra");
+//        Assertions.assertEquals(4, contactDetails.size());
+//    }
 }

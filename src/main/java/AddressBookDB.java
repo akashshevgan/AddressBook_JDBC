@@ -18,9 +18,17 @@ public class AddressBookDB {
         return connection;
     }
 
-    public List<Data> getAllDetailsFromTable() throws CustomException {
-        String sql = "select * from addressbook;";
-        return this.getDataFromDBWhenSQLGiven(sql);
+    private List<Data> getDataFromDBWhenSQLGiven(String sql) throws CustomException {
+        List<Data> contactDetails;
+        try (Connection connection = this.getConnection()) {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            contactDetails = getResultSet(resultSet);
+
+        } catch (SQLException e) {
+            throw new CustomException("Query Failed");
+        }
+        return contactDetails;
     }
 
     private List<Data> getResultSet(ResultSet resultSet) throws CustomException {
@@ -43,6 +51,11 @@ public class AddressBookDB {
         return contactDetails;
     }
 
+    public List<Data> getAllDetailsFromTable() throws CustomException {
+        String sql = "select * from addressbook;";
+        return this.getDataFromDBWhenSQLGiven(sql);
+    }
+
     public int updateContactDetailsInDB(String firstName, String phoneNumber) throws CustomException {
         String sql = String.format("update addressbook set phonenumber = '%s' where firstname = '%s';", phoneNumber, firstName);
         try (Connection connection = this.getConnection()) {
@@ -53,16 +66,13 @@ public class AddressBookDB {
         }
     }
 
-    private List<Data> getDataFromDBWhenSQLGiven(String sql) throws CustomException {
-        List<Data> contactDetails;
-        try (Connection connection = this.getConnection()) {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
-            contactDetails = getResultSet(resultSet);
-
-        } catch (SQLException e) {
-            throw new CustomException("Query Failed");
-        }
-        return contactDetails;
+    public List<Data> getContactDetailsAccordingToCity(String city) throws CustomException {
+        String sql = String.format("select * from addressbook where city = '%s';", city);
+        return this.getDataFromDBWhenSQLGiven(sql);
     }
+
+//    public List<Data> getContactDetailsAccordingToState(String state) throws CustomException {
+//        String sql = String.format("select * from addressbook where state = '%s';", state);
+//        return this.getDataFromDBWhenSQLGiven(sql);
+//    }
 }
